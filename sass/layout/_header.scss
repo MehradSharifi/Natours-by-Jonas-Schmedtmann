@@ -1,25 +1,31 @@
 .header {
     position: relative;
-    height: 95vh;
+    height: 85vh;
     background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
         url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    //graceful degradation
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
+    //graceful degradation
 
     //Responsice Images in CSS
     //1 condition with and & or(,)
-    @media (min-resolution: 192dpi) and (min-width: 37.5em), 
-          (min-width: 125em) {
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+        (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5) {
         background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+            url(../img/hero.jpg);
     }
 
     //2
-    @media (min-width: 2000px) {
+    @media (min-width: 125em) {
         background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+            url(../img/hero.jpg);
     }
     //Responsice Images in CSS
 

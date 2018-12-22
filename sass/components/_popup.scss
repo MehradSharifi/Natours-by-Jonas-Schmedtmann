@@ -6,9 +6,19 @@
     top: 0;
     left: 0;
     background-color: rgba($color: $color-black, $alpha: .8);
+    //only safary support
+    //backdrop-filter: blur(10px);
+    //only safary support
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+
+    //graceful degradation
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+     //graceful degradation
 
     // Open Popup
     &:target {
