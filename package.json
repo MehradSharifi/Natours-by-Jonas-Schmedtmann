@@ -13,7 +13,7 @@
     
     "build:css": "npm-run-all concat:css prefix:css compress:css"
   },
-  "author": "Mehrad",
+  "author": "Jonas",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.4.3",
